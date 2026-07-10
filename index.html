@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Phone Timer - Speaker Countdown</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="setup" class="setup">
+    <h1>Speaker Phone Timer</h1>
+    <p>Set the countdown and tap Flash to start.</p>
+    <div class="time-inputs">
+      <div>
+        <label for="minutes">Min</label>
+        <input type="number" id="minutes" min="0" max="999" value="5" inputmode="numeric">
+      </div>
+      <span class="sep">:</span>
+      <div>
+        <label for="seconds">Sec</label>
+        <input type="number" id="seconds" min="0" max="59" value="00" inputmode="numeric">
+      </div>
+    </div>
+    <div class="options">
+      <label>
+        <input type="checkbox" id="flashToggle" checked>
+        Flash display
+      </label>
+    </div>
+    <button id="flashBtn" class="flash-btn">Flash</button>
+  </div>
+
+  <div id="display" class="display hidden">
+    <div id="timerText" class="timer-text">00:00</div>
+    <div class="controls">
+      <button id="pauseBtn">Pause</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

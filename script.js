@@ -32,6 +32,38 @@ function updateDisplay() {
   } else if (remainingSeconds <= 30 && remainingSeconds > 10) {
     timerText.classList.add('warning');
   }
+
+  fitText();
+}
+
+function fitText() {
+  const isPortrait = window.innerHeight > window.innerWidth;
+  const containerSize = isPortrait ? window.innerWidth : window.innerHeight;
+  const maxSize = isPortrait ? window.innerHeight : window.innerWidth;
+
+  let size = containerSize * 0.9;
+  timerText.style.fontSize = `${size}px`;
+
+  // Binary search for the largest size that fits within the available space
+  const textRect = () => timerText.getBoundingClientRect();
+  const fits = () => {
+    const r = textRect();
+    return r.width <= maxSize && r.height <= containerSize;
+  };
+
+  let min = 1;
+  let max = size;
+  for (let i = 0; i < 20; i++) {
+    const mid = (min + max) / 2;
+    timerText.style.fontSize = `${mid}px`;
+    if (fits()) {
+      min = mid;
+    } else {
+      max = mid;
+    }
+  }
+
+  timerText.style.fontSize = `${min}px`;
 }
 
 function requestFullscreen() {

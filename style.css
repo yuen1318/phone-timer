@@ -108,6 +108,8 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0;
+  padding: 0;
   background: #000;
   z-index: 100;
 }
@@ -117,18 +119,20 @@ html, body {
 }
 
 .timer-text {
-  font-size: 35vw;
+  font-size: 48vw;
   font-weight: 900;
-  line-height: 1;
-  color: #0f0;
-  text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  line-height: 0.85;
+  color: #FFF78D;
+  text-shadow: 0 0 10px rgba(255, 247, 141, 0.8);
   white-space: nowrap;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.08em;
+  margin: 0;
+  padding: 0;
 }
 
 .timer-text.warning {
-  color: #ff0;
-  text-shadow: 0 0 10px rgba(255, 255, 0, 0.8);
+  color: #FFF78D;
+  text-shadow: 0 0 10px rgba(255, 247, 141, 0.8);
 }
 
 .timer-text.danger {
@@ -147,25 +151,32 @@ html, body {
 
 .controls {
   position: absolute;
-  bottom: 1rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 1rem;
+  justify-content: center;
+  gap: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .controls button {
-  padding: 0.75rem 1.5rem;
+  flex: 1;
+  padding: 0.75rem 0;
   font-size: 1rem;
-  border: 2px solid #444;
-  border-radius: 0.5rem;
+  border: 1px solid #333;
+  border-radius: 0;
   background: #111;
   color: #fff;
   cursor: pointer;
+  margin: 0;
 }
 
 /* Force landscape feel on phones */
 @media screen and (orientation: portrait) {
   .timer-text {
     transform: rotate(-90deg);
-    font-size: 28vh;
+    font-size: 42vh;
   }
 }

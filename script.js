@@ -137,6 +137,27 @@ window.addEventListener('resize', () => {
   }
 });
 
+// Double-tap / double-click the timer to toggle fullscreen
+timerText.addEventListener('dblclick', toggleFullscreen);
+
+let lastTap = 0;
+timerText.addEventListener('touchend', (e) => {
+  const now = Date.now();
+  if (now - lastTap < 300) {
+    e.preventDefault();
+    toggleFullscreen();
+  }
+  lastTap = now;
+});
+
+function toggleFullscreen() {
+  if (document.fullscreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
+    exitFullscreen();
+  } else {
+    requestFullscreen();
+  }
+}
+
 // Prevent invalid input
 [minutesInput, secondsInput].forEach(input => {
   input.addEventListener('change', () => {

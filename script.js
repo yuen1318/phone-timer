@@ -37,23 +37,21 @@ function updateDisplay() {
 }
 
 function fitText() {
-  const isPortrait = window.innerHeight > window.innerWidth;
-  const containerSize = isPortrait ? window.innerWidth : window.innerHeight;
-  const maxSize = isPortrait ? window.innerHeight : window.innerWidth;
+  const maxWidth = window.innerWidth;
+  const maxHeight = window.innerHeight;
 
-  let size = containerSize * 0.9;
-  timerText.style.fontSize = `${size}px`;
-
-  // Binary search for the largest size that fits within the available space
   const textRect = () => timerText.getBoundingClientRect();
   const fits = () => {
     const r = textRect();
-    return r.width <= maxSize && r.height <= containerSize;
+    return r.width <= maxWidth && r.height <= maxHeight;
   };
 
+  // Start large and binary-search down to the biggest size that fits
   let min = 1;
-  let max = size;
-  for (let i = 0; i < 20; i++) {
+  let max = Math.max(maxWidth, maxHeight);
+  timerText.style.fontSize = `${max}px`;
+
+  for (let i = 0; i < 30; i++) {
     const mid = (min + max) / 2;
     timerText.style.fontSize = `${mid}px`;
     if (fits()) {
@@ -133,6 +131,11 @@ function resetTimer() {
 flashBtn.addEventListener('click', startTimer);
 pauseBtn.addEventListener('click', pauseTimer);
 resetBtn.addEventListener('click', resetTimer);
+window.addEventListener('resize', () => {
+  if (!display.classList.contains('hidden')) {
+    fitText();
+  }
+});
 
 // Prevent invalid input
 [minutesInput, secondsInput].forEach(input => {

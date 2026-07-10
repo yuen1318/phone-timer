@@ -169,7 +169,9 @@ function toggleFullscreen() {
 });
 
 // Register service worker for offline use
-if ('serviceWorker' in navigator) {
+// Note: Service workers require http://, https://, or localhost.
+// They do not work when opening the file directly via file://.
+if ('serviceWorker' in navigator && location.protocol.includes('http')) {
   navigator.serviceWorker.register('./sw.js')
     .then(() => console.log('Service Worker registered'))
     .catch((err) => console.error('Service Worker registration failed', err));

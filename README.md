@@ -19,3 +19,7 @@ A simple static web app for speakers to see a large, flashing countdown timer fr
 2. Go to **Settings → Pages**.
 3. Under **Build and deployment**, select **Deploy from a branch** and choose `main` / `root`.
 4. Your site will be available at `https://<username>.github.io/phone-timer`.
+
+## Offline support
+
+The app uses a service worker to work offline. Service workers require the site to be served over `http://`, `https://`, or `localhost`. They will not work if you open `index.html` directly from your file system (`file://`).

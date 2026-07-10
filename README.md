@@ -10,6 +10,8 @@ A simple static web app for speakers to see a large, flashing countdown timer fr
 - Flashing display option
 - Color changes to yellow (≤30s) and red (≤10s)
 - Pause/Resume and Reset controls
+- Double-tap the timer to toggle fullscreen
+- Works offline via a service worker
 
 ## GitHub Pages
 
